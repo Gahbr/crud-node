@@ -27,11 +27,10 @@ $(function(){
 		}
 	// caso contrário insere
 		var cliente = JSON.stringify({
-			Codigo   : $("#txtCodigo").val(),
 			Nome     : $("#txtNome").val(),
 			Telefone : $("#txtTelefone").val(),
 			Email    : $("#txtEmail").val(),
-			DtCad    : $("#txtDtCad").val()
+			Genero    : $("#txtGenero").val()
 		});
 		
 		
@@ -44,20 +43,6 @@ $(function(){
 	}
 	
 
-	// Função para editar clientes
-	function Editar(){
-		tbClientes[indice_selecionado] = JSON.stringify({
-				Codigo   : $("#txtCodigo").val(),
-				Nome     : $("#txtNome").val(),
-				Telefone : $("#txtTelefone").val(),
-				Email    : $("#txtEmail").val(),
-				DtCad    : $("#txtDtCad").val()
-			});
-		localStorage.setItem("tbClientes", JSON.stringify(tbClientes));
-		alert("Informações editadas.")
-		operacao = "A";
-		return true;
-	}
 	// Função para listar clientes
 	function Listar(){
 	
@@ -66,11 +51,10 @@ $(function(){
 			"<thead>"+
 			"	<tr>"+
 			"<th></th>"+
-			"	<th>Código</th>"+
-			"	<th>Pessoa</th>"+
+			"	<th>Nome</th>"+
 			"	<th>Telefone</th>"+
 			"	<th>Email</th>"+
-			"	<th>Data de Cadastro</th>"+
+			"	<th>Genero</th>"+
 			"	</tr>"+
 			"</thead>"+
 			"<tbody>"+
@@ -81,14 +65,13 @@ $(function(){
 		 for(var i in tbClientes){
 			var cli = JSON.parse(tbClientes[i]);
 			// Formatar data para o format brasileiro dia, mes, ano
-			var dtfinal = cli.DtCad.substring(8,10) + "/" +cli.DtCad.substring(5,7)  +"/"  +cli.DtCad.substring(0,4);
+			// var dtfinal = cli.DtCad.substring(8,10) + "/" +cli.DtCad.substring(5,7)  +"/"  +cli.DtCad.substring(0,4);
 		  	$("#tblListar tbody").append("<tr>"+
 									 	 "	<td><img src='images/edit.png' alt='"+i+"' class='btnEditar'/><img src='images/delete.png' alt='"+i+"' class='btnExcluir'/></td>" + 
-										 "	<td>"+cli.Codigo+"</td>" + 
 										 "	<td>"+cli.Nome+"</td>" + 
 										 "	<td>"+cli.Telefone+"</td>" + 
 										 "	<td>"+cli.Email+"</td>" + 
-										 "	<td>"+dtfinal+"</td>" + 
+										 "	<td>"+cli.Genero+"</td>" + 
 		  								 "</tr>");
 		 }
 	}
@@ -125,11 +108,11 @@ $(function(){
 		operacao = "E";
 		indice_selecionado = parseInt($(this).attr("alt"));
 		var cli = JSON.parse(tbClientes[indice_selecionado]);
-		$("#txtCodigo").val(cli.Codigo);
+		
 		$("#txtNome").val(cli.Nome);
 		$("#txtTelefone").val(cli.Telefone);
 		$("#txtEmail").val(cli.Email);
-		$("#txtDtCad").val()(cli.DtCad);
+		$("#txtGenero").val()(cli.Genero);
 		$("#txtCodigo").attr("readonly","readonly");
 		$("#txtNome").focus();
 	});
@@ -156,42 +139,7 @@ $("#txtNome").change(function () {
 		$("#txtStatus").val('Em andamento');
 });
 
-// Obtém a data/hora atual
-	
-	var data = new Date();
-	
-	// Guarda cada pedaço em uma variável
-	var dia     = data.getDate();           // 1-31
-	var dia_sem = data.getDay();            // 0-6 (zero=domingo)
-	var mes     = data.getMonth();          // 0-11 (zero=janeiro)
-	var ano2    = data.getYear();           // 2 dígitos
-	var ano4    = data.getFullYear();       // 4 dígitos
-	var hora    = data.getHours();          // 0-23
-	var min     = data.getMinutes();        // 0-59
-	var seg     = data.getSeconds();        // 0-59
-	var mseg    = data.getMilliseconds();   // 0-999
-	var tz      = data.getTimezoneOffset(); // em minutos
-	
-	if(dia<10) {
-		dia = '0'+dia;
-	} 
-  
-	if(mes<10) {
-		mes = '0'+ (mes+1);
-	} 
 
-	// Formata a data e a hora (note o mês + 1)
-	var str_data = dia + '/' + (mes+1) + '/' + ano4; // Brasil
-	var str_data_Brazil = ano4 + '-' + mes + '-' + dia; // europeu
-	var hora_geral = hora + ':'+ min;
-	//var str_hora = hora + ':' + min + ':' + seg;
-
-	// Mostra o resultado
-	//alert('Hoje é ' + str_data + ' às ' + str_hora);
-	$("#txtDtCad").val(str_data_Brazil);
-	$("#txtHora").val(hora_geral);
-
-	//alert(hora_geral);
 
 
 

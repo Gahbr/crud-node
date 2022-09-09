@@ -5,7 +5,7 @@ let  http= require('http')
 let fs = require('fs')
 
 // criando uma avriavel para reecber o conteudo da pagina
-let conteudo = fs.readFileSync('index.html')
+let conteudo = fs.readFileSync('../index.html')
 
 //subindo o nosso serviço com nodejs
 http.createServer( (req,res) =>{
