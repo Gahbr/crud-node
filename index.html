@@ -15,35 +15,22 @@
 			
 			<!-- Formulário para cadastro dos clientes -->
 		<form id="frmCadastro">
-			<h1>Formulário de cadastro</h1>
-					<label for="txtCodigo">Registro de Matrícula:</label>
-					<input type="text" id="txtCodigo"  /><br>
+			<h1>Adicionar</h1>
 	
 					<label for="txtNome">Nome:</label>
 					<input type="text" id="txtNome" required/><br>
 	
-					<label for="txtTelefone">Telefone:</label>
-					<input type="text" id="txtTelefone"/><br>
+					<label for="txtTelefone">Idade:</label>
+					<input type="number" id="txtTelefone"/><br>
 	
 					<label for="txtEmail">Email:</label>
 					<input type="text" id="txtEmail" required/><br>
-	<!-- 
-					<label for="txtStatus">Status:</label>
-					<input type="text" id="txtStatus" disabled /><br>
-	 -->
-	 				Cursos: 
-					<select name="select">
-						<option value="valor1">Java</option>
-						<option value="valor2" selected>Javascript</option>
-						<option value="valor3">Banco de Dados</option>
-					</select> <br>
-					<label for="txtDtCad">Data Cadastro:</label>
-					<input type="date" id="txtDtCad" required /><br>
+
+					<label for="txtGenero">Gênero:</label>
+					<input type="text" id="txtGenero" required/><br>
+	 				
 	
-					<label for="txtHora">Hora Cadastro:</label>
-					<input type="time" id="txtHora"  /><br>
-	
-					<input type="submit" value="Salvar" id="btnSalvar"/>
+					<input type="submit" value="Cadastrar" id="btnSalvar"/>
 		</form>
 		</div>
 <!-- Tabela para listar os clientes com possibilidade de alterar/excluir -->

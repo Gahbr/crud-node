@@ -7,18 +7,20 @@ let con = mysql.createConnection({
     host:"localhost",
     user:"root",
     password:"mysql",
-    database:"nodejs"
+    database:"grupo-crud"
 });
 
 
     // Utilizando a passagem de parâmetros através da variável con 
-con.connect(function(err){
+ var select = con.connect(function(err){
     if(err)throw err;
     console.log("Conectado");
-    con.query("select * from consumidores",function(err,result,fields){
+    con.query("select * from pessoa",function(err,result,fields){
             if(err)throw err;
             console.log(result);
             console.log("Resultado do Select");
 
     });
 });
+
+module.exports = {select}
